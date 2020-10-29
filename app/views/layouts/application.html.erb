@@ -10,6 +10,12 @@
   </head>
 
   <body>
-    <%= yield %>
+  <%if current_user.exists?%>
+    <%=link_to "Logout", logout_path%>
+    <% else %>  
+    <%= link_to "Sign Up", signup_path %> or  
+    <%= link_to "Log In", login_path %>  
+  <%end%>
+  <%= yield %>
   </body>
 </html>

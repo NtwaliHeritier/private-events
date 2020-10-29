@@ -1,7 +1,7 @@
-<h3>SignUp Here</h3>
+<h3>Sign Up Here</h3>
 
-<%= form_for @user do |f|%>
- UserName: <%= f.text_field :username %>
- Email: <%= f.text_field :email %>
- <%= f.submit "Create" %>
+<%=form_for @user do |f|%>
+    Username <%=f.text_field :username%>
+    Email <%=f.text_field :email%>
+    <%=f.submit%>
 <%end%>
