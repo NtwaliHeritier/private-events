@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :events do
     resources :invitations
   end
-  
+  resources :attendances
+
   get 'signup', to: 'users#new', as: 'signup'  
   post 'sessions', to: 'sessions#create'
   get 'login', to: 'sessions#new', as: 'login'  

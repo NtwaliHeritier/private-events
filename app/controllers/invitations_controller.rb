@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
    def create
     user=User.where(username: params["invitee_username"]).first
-    event=Event.find(params[:id])
+    event=Event.find(params[:event_id])
     @invitation=Invitation.new
     @invitation.invitor_id=current_user.id
     @invitation.event_id=params["event_id"]

@@ -1,8 +1,16 @@
 <br/>
 PENDING INVITATION <br/>
 <p>
+
 <%current_user.received_invitations.each do |invitation|%>
-    <%=invitation.event.name%>
+   <% if !invitation.status %>
+         <%=invitation.event.name%>
+            <%= form_tag attendances_path do%>
+                <%= hidden_field_tag 'event_id', invitation.event.id%>
+                <%= hidden_field_tag 'invitation_id', invitation.id%>
+                <%=submit_tag "Accept"%>
+            <%end%>
+   <%end%>
 <%end%>
 </p>
 <p>

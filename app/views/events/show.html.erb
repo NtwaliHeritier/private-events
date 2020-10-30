@@ -22,9 +22,12 @@
          <li><%=attendee.username%></li>
        <%end%>
    </ul>
-   INVITE
+   
 
-   <%=form_tag event_invitations_path(@event) do |f|%>
-   Invitee <%=select_tag(:invitee_username, options_for_select(User.all.collect{|u| u.username}))%>
-   <%=submit_tag "Invite"%>
-   <%end%>
+  <% if current_user.id  == @event.creator.id %>
+     INVITE: 
+     <%=form_tag event_invitations_path(@event) do |f|%>
+         Invitee <%=select_tag(:invitee_username, options_for_select(User.all.collect{|u|u.username if u.id != current_user.id}))%>
+         <%=submit_tag "Invite"%>
+      <%end%>
+  <%end%>
