@@ -1,0 +1,9 @@
+<h3>New Event</h3>
+
+<%=form_for @event do |f|%>
+    Name: <%=f.text_field :name%>
+    Location: <%=f.text_field :location%>
+    Start_date: <%=f.date_field :start_date%>
+    Description: <%= f.text_area :description %>
+    <%=f.submit%>
+<%end%>

@@ -1,8 +1,16 @@
-<h3> Show All Users </h3>
-
-<ul id = "users">
-     <li>
-        <%=@user.username%>
-        <%=@user.email%>
-     </li>
-</ul>
+<h3> Your Events </h3>
+<p>
+   <ul id = "users">
+      <% @user.created_events.each do |event|%>
+      <li>
+          Event: <%= event.name %> <br/> 
+      </li>
+      <li>
+        Location: <%= event.location %><br/>
+      </li>
+      <li>     
+         Event_Date: <%= event.start_date %>
+      </li>
+      <%end%>    
+   </ul>
+</p>
