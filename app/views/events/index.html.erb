@@ -1,5 +1,32 @@
-<%@events.each do |event|%>
+<br/>
+PENDING INVITATION <br/>
+<p>
+<%current_user.received_invitations.each do |invitation|%>
+    <%=invitation.event.name%>
+<%end%>
+</p>
+<p>
+PAST EVENTS
+<%if !@past_events.exists?%>
+<p>No past events</p>
+<%else%>
+<%@past_events.each do |event|%>
     <p>
         <%= link_to event.name, event_path(event)%>
     </p>
 <%end%>
+<%end%>
+</p>
+
+<p>
+FUTURE EVENTS
+<%if !@future_events.exists?%>
+<p>No future events</p>
+<%else%>
+<%@future_events.each do |event|%>
+    <p>
+        <%= link_to event.name, event_path(event)%>
+    </p>
+<%end%>
+<%end%>
+</p>
