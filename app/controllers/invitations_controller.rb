@@ -6,12 +6,8 @@ class InvitationsController < ApplicationController
     @invitation.invitor_id = current_user.id
     @invitation.event_id = params['event_id']
     @invitation.invitee_id = user.id
-    if @invitation.save
-      flash[:notice] = 'Invitation sent'
-      redirect_to event_path(event)
-    else
-      flash[:notice] = 'Invitation not sent'
-      redirect_to event_path(event)
-    end
+    message = @invitation.save ? 'Invitation sent' : 'Invitation not sent'
+    flash[:notice] = message
+    redirect_to event_path(event)
   end
 end
