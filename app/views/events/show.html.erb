@@ -1,0 +1,33 @@
+<h3> Your Events </h3>
+   <ul>  
+       <li>
+         Creator: <%= @event.creator.username %> <br/> 
+      </li>   
+      <li>
+          Event: <%= @event.name %> <br/> 
+      </li>
+      <li>
+        Location: <%= @event.location %><br/>
+      </li>
+      <li>     
+         Event_Date: <%= @event.start_date %>
+      </li>
+       <li>     
+         Description: <%= @event.description %>
+      </li>
+   </ul>
+   <h3>Attendees</h3>
+   <ul>
+      <%@event.user_attendeds.each do |attendee|%>
+         <li><%=attendee.username%></li>
+       <%end%>
+   </ul>
+   
+
+  <% if current_user.id  == @event.creator.id %>
+     INVITE: 
+     <%=form_tag event_invitations_path(@event) do |f|%>
+         Invitee <%=select_tag(:invitee_username, options_for_select(User.all.collect{|u|u.username if u.id != current_user.id}))%>
+         <%=submit_tag "Invite"%>
+      <%end%>
+  <%end%>

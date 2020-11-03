@@ -10,6 +10,15 @@
   </head>
 
   <body>
-    <%= yield %>
+  <%if current_user%>
+    <p><%=link_to "Create Event", new_event_path%> |
+    </p>
+    <%=link_to "Logout", logout_path%>
+  <% else %>  
+    <%= link_to "Sign Up", signup_path %> or  
+    <%= link_to "Log In", login_path %>  
+  <%end%>
+  <%=flash[:notice]%>
+  <%= yield %>
   </body>
 </html>
